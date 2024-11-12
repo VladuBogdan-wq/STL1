@@ -40,7 +40,7 @@ int main()
                 ok = 1;
             }
         }
-        if (ok == 0) cout << name_prob[i] << " " << "Respins" << endl;
+        if (ok == 0) cout << name_prob[i] << " " << "RESPINS" << endl;
     }
     return 0;
 }
