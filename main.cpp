@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -21,26 +22,22 @@ int main()
     }
 
     inFile >> no_doctors;
-    vector<int> numberdoc(no_doctors, 0);
+    vector<string> numberdoc(no_doctors);
     vector<string> speciality2(no_doctors);
     for (int i = 0; i < no_doctors; i++)
     {
-        inFile >> name;
+        inFile >> numberdoc[i];
         inFile >> speciality2[i];
     }
     for (int i = 0; i < no_problems; i++)
     {
-        int ok = 0;
-        for (int j = 0; j < no_doctors; j++)
+        auto spec = speciality1[i];
+        auto it = find(speciality2.begin(), speciality2.end(), spec);
+        if (it != speciality2.end())
         {
-            if (speciality1[i] == speciality2[j] && numberdoc[j] == 0)
-            {
-                cout << name_prob[i] << " " << "Acceptat" << endl;
-                numberdoc[j] = 1;
-                ok = 1;
-            }
+            cout << numberdoc[i] << " " << speciality1[i]<<endl;
         }
-        if (ok == 0) cout << name_prob[i] << " " << "RESPINS" << endl;
+        
     }
     return 0;
 }
